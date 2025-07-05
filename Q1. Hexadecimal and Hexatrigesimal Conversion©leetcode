@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string toBase(int num, int base) {
+        string dig = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string result = "";
+        if (num == 0) return "0";
+        while (num > 0) {
+            result = dig[num % base] + result;
+            num /= base;
+        }
+        return result;
+    }
+
+    string concatHex36(int n) {
+        int n2 = n * n;
+        int n3 = n * n * n;
+
+        string hex = toBase(n2, 16);   // Base-16 (Hexadecimal)
+        string base36 = toBase(n3, 36); // Base-36 (Hexatrigesimal)
+
+        return hex + base36;
+    }
+};
+©leetcode
